@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct PokemonModel: Decodable {
+    let results: [Pokemon]
+}
+
+struct Pokemon: Decodable {
+    let name: String
+}
