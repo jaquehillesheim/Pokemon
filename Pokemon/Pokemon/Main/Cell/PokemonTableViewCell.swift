@@ -15,7 +15,8 @@ class PokemonTableViewCell: UITableViewCell {
     private(set) lazy var title: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 20.0)
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.numberOfLines = 2
         return label
     }()
     
@@ -29,17 +30,18 @@ class PokemonTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setLayout() {
-        backgroundColor = .clear
+    func setLayout() {
+        backgroundColor = .red
+        title.textColor = .white
     }
     
     func setupLabel() {
         addSubview(title)
         
         title.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16.0)
-            make.bottom.equalToSuperview().offset(-16.0)
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.top.bottom.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
     }
+
 }

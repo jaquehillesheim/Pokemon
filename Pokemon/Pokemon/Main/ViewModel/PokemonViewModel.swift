@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class PokemonViewModel {
+    
+    var pokemons: PokemonsModel?
     var reloadtableView: (() -> Void)?
     
     private let service = PokemonService()
@@ -39,12 +41,20 @@ class PokemonViewModel {
         return cellViewModels[indexPath.row]
     }
     
-    func createCell(pokemons: PokemonModel) {
+    func createCell(pokemons: PokemonsModel) {
+        self.pokemons = pokemons
+        var number = 0
         var viewModels = [PokemonCellViewModel]()
         for pokemon in pokemons.results {
-            viewModels.append(PokemonCellViewModel(name: pokemon.name))
+            number += 1
+            viewModels.append(PokemonCellViewModel(name: "#\(number) \(pokemon.name.capitalized)"))
+            
         }
         cellViewModels = viewModels
+    }
+    
+    func didSelectPokemon(at indexPath: IndexPath) -> String {
+        return pokemons?.results[indexPath.row].url ?? ""
     }
 }
 

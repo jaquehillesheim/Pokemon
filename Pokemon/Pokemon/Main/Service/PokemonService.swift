@@ -16,7 +16,7 @@ class PokemonService {
     
     private let urlAPI = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
     
-    func fetchPokemon(completion: @escaping (Result<PokemonModel, Error>) -> Void) {
+    func fetchPokemon(completion: @escaping (Result<PokemonsModel, Error>) -> Void) {
         guard let url = URL(string: "\(urlAPI)") else
         { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -30,7 +30,7 @@ class PokemonService {
             }
             
             do {
-                let pokemon = try JSONDecoder().decode(PokemonModel.self, from: data)
+                let pokemon = try JSONDecoder().decode(PokemonsModel.self, from: data)
                 completion(.success(pokemon))
             } catch let error {
                 completion(.failure(error))
