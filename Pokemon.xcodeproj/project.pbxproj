@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B3B948A295C75C400562D5B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B9489295C75C400562D5B /* UIColor+.swift */; };
 		7B61AA64295B1998007C5802 /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61AA63295B1998007C5802 /* AboutModel.swift */; };
 		7B61AA66295B1D1B007C5802 /* MovesCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61AA65295B1D1B007C5802 /* MovesCharacteristics.swift */; };
 		7BACC2CE294A61CF001C7E1F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BACC2CD294A61CF001C7E1F /* StatsView.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		0FFA133303C8576B64E6C7D3 /* Pods_Pokemon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7EB92AD365B026E26C7444 /* Pods-Pokemon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon.release.xcconfig"; path = "Target Support Files/Pods-Pokemon/Pods-Pokemon.release.xcconfig"; sourceTree = "<group>"; };
+		7B3B9489295C75C400562D5B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		7B61AA63295B1998007C5802 /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		7B61AA65295B1D1B007C5802 /* MovesCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesCharacteristics.swift; sourceTree = "<group>"; };
 		7BACC2CD294A61CF001C7E1F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B3B9488295C759600562D5B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7B3B9489295C75C400562D5B /* UIColor+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7B61AA62295B1979007C5802 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		7BDF67E4293104B500FB15A6 /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
+				7B3B9488295C759600562D5B /* Extensions */,
 				7BFE8B27293A30B200F02ABA /* Main */,
 				7BFE8B26293A30A700F02ABA /* Details */,
 			);
@@ -421,6 +432,7 @@
 				7BDF67ED29310C4700FB15A6 /* PokemonTableViewCell.swift in Sources */,
 				7BE5BB9E2959E56900211F93 /* AboutView.swift in Sources */,
 				7BFE8B232938CEC300F02ABA /* PokemonDetailsViewController.swift in Sources */,
+				7B3B948A295C75C400562D5B /* UIColor+.swift in Sources */,
 				7BE5BBA02959E74C00211F93 /* Characteristics.swift in Sources */,
 				7BFE8B2C293A32E200F02ABA /* PokemonDetailsService.swift in Sources */,
 				7BDF67E02930F4A800FB15A6 /* PokemonService.swift in Sources */,
@@ -492,7 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -546,7 +558,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -572,7 +584,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,7 +614,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

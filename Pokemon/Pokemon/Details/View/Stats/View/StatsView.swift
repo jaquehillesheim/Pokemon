@@ -16,6 +16,7 @@ class StatsView: UIView {
         label.textAlignment = .center
         label.text = "Base Stats"
         label.textColor = .black
+        
         return label
     }()
     
@@ -35,6 +36,7 @@ class StatsView: UIView {
         stack.distribution = .fillProportionally
         stack.spacing = 16
         stack.axis = .vertical
+        
         return stack
     }()
     
@@ -57,22 +59,22 @@ class StatsView: UIView {
     }
     
     func setupDetails(statsModel: StatsModel) {
-        let hpStats = StatsDetails(valueStatsLabel: statsModel.hpString, progressView: statsModel.hpValue)
+        let hpStats = StatsDetails(valueStatsLabel: statsModel.hpString, progressView: statsModel.hpValue, progressColor: statsModel.progressColor)
         hpView.setupDetails(statsDetails: hpStats)
         
-        let atkStats = StatsDetails(valueStatsLabel: statsModel.atkString, progressView: statsModel.atkValue)
+        let atkStats = StatsDetails(valueStatsLabel: statsModel.atkString, progressView: statsModel.atkValue, progressColor: statsModel.progressColor)
         atkView.setupDetails(statsDetails: atkStats)
         
-        let defStats = StatsDetails(valueStatsLabel: statsModel.defString, progressView: statsModel.defValue)
+        let defStats = StatsDetails(valueStatsLabel: statsModel.defString, progressView: statsModel.defValue, progressColor: statsModel.progressColor)
         defView.setupDetails(statsDetails: defStats)
         
-        let sAtkStats = StatsDetails(valueStatsLabel: statsModel.sAtkString, progressView: statsModel.sAtkValue)
+        let sAtkStats = StatsDetails(valueStatsLabel: statsModel.sAtkString, progressView: statsModel.sAtkValue, progressColor: statsModel.progressColor)
         sAtkView.setupDetails(statsDetails: sAtkStats)
         
-        let sDefStats = StatsDetails(valueStatsLabel: statsModel.sDefString, progressView: statsModel.sDefValue)
+        let sDefStats = StatsDetails(valueStatsLabel: statsModel.sDefString, progressView: statsModel.sDefValue, progressColor: statsModel.progressColor)
         sDefView.setupDetails(statsDetails: sDefStats)
         
-        let spdStats = StatsDetails(valueStatsLabel: statsModel.spdString, progressView: statsModel.spdValue)
+        let spdStats = StatsDetails(valueStatsLabel: statsModel.spdString, progressView: statsModel.spdValue, progressColor: statsModel.progressColor)
         spdView.setupDetails(statsDetails: spdStats)
     }
 }

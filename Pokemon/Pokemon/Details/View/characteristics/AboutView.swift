@@ -33,7 +33,7 @@ class AboutStatsView: UIView {
         }
         stack.distribution = .fillEqually
         stack.axis = .horizontal
-        stack.spacing = 4
+        stack.spacing = 2
         stack.alignment = .center
         
         return stack

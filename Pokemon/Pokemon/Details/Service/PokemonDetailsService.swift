@@ -37,7 +37,6 @@ class PokemonDetailsService {
             }
         }.resume()
     }
-
     
     func fetchColor(url: String, completion: @escaping (Result<SpeciesDetails, Error>) -> Void) {
         guard let url = URL(string: url) else

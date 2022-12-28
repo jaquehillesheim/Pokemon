@@ -31,8 +31,8 @@ class PokemonTableViewCell: UITableViewCell {
     }
     
     func setLayout() {
-        backgroundColor = .red
-        title.textColor = .white
+        backgroundColor = .white
+        title.textColor = .black
     }
     
     func setupLabel() {

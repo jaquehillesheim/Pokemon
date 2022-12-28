@@ -17,6 +17,7 @@ class PokemonDetailsViewController: UIViewController {
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
         label.textColor = .black
+        
         return label
     }()
     
@@ -25,6 +26,7 @@ class PokemonDetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textColor = .black
+        
         return label
         
     }()
@@ -35,6 +37,7 @@ class PokemonDetailsViewController: UIViewController {
         image.layer.cornerRadius = 40.0
         image.layer.masksToBounds = true
         image.contentMode = .scaleAspectFit
+        
         return image
     }()
     
@@ -53,6 +56,7 @@ class PokemonDetailsViewController: UIViewController {
         stack.axis = .vertical
         stack.backgroundColor = .white
         stack.layer.cornerRadius = 20
+        
         return stack
     }()
     
@@ -119,6 +123,7 @@ extension PokemonDetailsViewController {
         
         nameLabel.text = viewModel.nameLabel
         idLabel.text = viewModel.idLabel
+        
         let aboutModel = AboutModel(
             imageWeight: "balance",
             valueWeight: viewModel.weightLabel,
@@ -139,7 +144,8 @@ extension PokemonDetailsViewController {
             sDefString: viewModel.sDefStatsLabel,
             sDefValue: viewModel.sDefStatsValue,
             spdString: viewModel.spdStatsLabel,
-            spdValue: viewModel.spdStatsValue
+            spdValue: viewModel.spdStatsValue,
+            progressColor: viewModel.pokemonColor
         )
         statsView.setupDetails(statsModel: statsModel)
         view.backgroundColor = viewModel.pokemonColor

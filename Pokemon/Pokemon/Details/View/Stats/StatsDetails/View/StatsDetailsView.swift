@@ -30,8 +30,7 @@ class StatsDetailsView: UIView {
         let progressView = UIProgressView(progressViewStyle: .default)
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.progress = 0.0
-        progressView.trackTintColor = .green
-        progressView.progressTintColor = .yellow
+        progressView.trackTintColor = .Gelo
        
         return progressView
     }()
@@ -46,6 +45,7 @@ class StatsDetailsView: UIView {
         stack.axis = .horizontal
         stack.spacing = 8
         stack.alignment = .center
+        
         return stack
     }()
     
@@ -75,6 +75,7 @@ class StatsDetailsView: UIView {
     }
     
     func setupDetails(statsDetails: StatsDetails) {
+        progressView.progressTintColor = statsDetails.progressColor
         valueStatsLabel.text = statsDetails.valueStatsLabel
         progressView.setProgress(statsDetails.progressView, animated: false)
     }

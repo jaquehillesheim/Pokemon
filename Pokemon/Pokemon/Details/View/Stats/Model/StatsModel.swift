@@ -1,3 +1,5 @@
+import UIKit
+
 struct StatsModel {
     let hpString: String
     let hpValue: Float
@@ -11,4 +13,5 @@ struct StatsModel {
     let sDefValue: Float
     let spdString: String
     let spdValue: Float
+    let progressColor: UIColor
 }

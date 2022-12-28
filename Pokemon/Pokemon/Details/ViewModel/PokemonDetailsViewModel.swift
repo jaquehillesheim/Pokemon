@@ -34,7 +34,7 @@ class PokemonDetailsViewModel {
             case .success(let success):
                 self.color = success.color.name
                 self.reload?()
-            case .failure(let failure):
+            case .failure(_):
                 break
             }
         }
@@ -43,29 +43,30 @@ class PokemonDetailsViewModel {
     var pokemonColor: UIColor {
         switch color {
         case "green":
-            return .green
+            return .greenLight
         case "blue":
-            return .blue
+            return .blueLight
         case "black":
-            return .black
+            return .BlackLight
         case "brown":
-            return .brown
+            return .brownLight
         case "gray":
             return .gray
         case "pink":
             return .systemPink
         case "purple":
-            return .purple
+            return .purpleLight
         case "red":
-            return .red
+            return .redLight
         case "white":
-            return .white
+            return .Gelo
         case "yellow":
             return .yellow
         default:
-            return .white
+            return .Gelo
         }
     }
+
     var frontDefaultImage: URL? {
         URL(string: model?.sprites.other.home.frontDefault ?? "") ?? URL(string: "")
     }
@@ -93,7 +94,7 @@ class PokemonDetailsViewModel {
         guard let moveLabel = model?.moves else { return ""}
         return "\(moveLabel[0].move.name)"
     }
-    
+
     var hpStatsLabel: String {
         guard let baseStatLabel = model?.stats else { return ""}
         return "\(baseStatLabel[0].baseStat)"
