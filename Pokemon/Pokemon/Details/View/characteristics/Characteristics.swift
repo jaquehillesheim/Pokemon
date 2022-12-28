@@ -21,7 +21,7 @@ class Characteristcs: UIView {
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 14)
         label.textColor = .black
         
         return label

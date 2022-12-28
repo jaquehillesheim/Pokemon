@@ -37,18 +37,8 @@ class PokemonDetailsViewController: UIViewController {
         image.contentMode = .scaleAspectFit
         return image
     }()
-
+    
     private lazy var aboutView = AboutStatsView()
-    
-    private lazy var moveLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
-        label.textAlignment = .center
-        return label
-    }()
-    
 
     private lazy var statsView = StatsView()
  
@@ -118,7 +108,7 @@ extension PokemonDetailsViewController {
         }
         
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(frontDefaultImage.snp.bottom).offset(16.0)
+            make.top.equalTo(frontDefaultImage.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(10)
             make.bottom.equalToSuperview().offset(-20)
         }
@@ -129,8 +119,14 @@ extension PokemonDetailsViewController {
         
         nameLabel.text = viewModel.nameLabel
         idLabel.text = viewModel.idLabel
-        aboutView.setupDetails(imageWeight: "balance", valueWeight: viewModel.weightLabel, imageHeight: "scale", valueHeight: viewModel.heightLabel)
-       
+        let aboutModel = AboutModel(
+            imageWeight: "balance",
+            valueWeight: viewModel.weightLabel,
+            imageHeight: "scale",
+            valueHeight: viewModel.heightLabel,
+            valueMoves: viewModel.moveLabel)
+        aboutView.setupDetails(aboutModel: aboutModel)
+  
         let statsModel = StatsModel(
             hpString: viewModel.hpStatsLabel,
             hpValue: viewModel.hpStatsValue,

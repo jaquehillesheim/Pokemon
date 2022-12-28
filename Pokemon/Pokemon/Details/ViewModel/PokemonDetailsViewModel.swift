@@ -91,7 +91,7 @@ class PokemonDetailsViewModel {
     
     var moveLabel: String {
         guard let moveLabel = model?.moves else { return ""}
-        return "Moves: \(moveLabel[0].move.name)"
+        return "\(moveLabel[0].move.name)"
     }
     
     var hpStatsLabel: String {

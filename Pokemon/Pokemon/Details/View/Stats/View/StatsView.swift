@@ -33,7 +33,7 @@ class StatsView: UIView {
             stack.addArrangedSubview(view)
         }
         stack.distribution = .fillProportionally
-        stack.spacing = 16.0
+        stack.spacing = 16
         stack.axis = .vertical
         return stack
     }()
