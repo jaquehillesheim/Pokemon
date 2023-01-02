@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7B3B948A295C75C400562D5B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B9489295C75C400562D5B /* UIColor+.swift */; };
+		7B47FA1C29631A1500FD9664 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA1B29631A1500FD9664 /* CarouselView.swift */; };
+		7B47FA4B2963517E00FD9664 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA4A2963517E00FD9664 /* CarouselCell.swift */; };
+		7B47FA4D296352B600FD9664 /* CarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA4C296352B600FD9664 /* CarouselModel.swift */; };
+		7B47FA4F2963902600FD9664 /* ModelDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA4E2963902600FD9664 /* ModelDefault.swift */; };
 		7B61AA64295B1998007C5802 /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61AA63295B1998007C5802 /* AboutModel.swift */; };
 		7B61AA66295B1D1B007C5802 /* MovesCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61AA65295B1D1B007C5802 /* MovesCharacteristics.swift */; };
 		7BACC2CE294A61CF001C7E1F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BACC2CD294A61CF001C7E1F /* StatsView.swift */; };
@@ -35,6 +39,10 @@
 		0FFA133303C8576B64E6C7D3 /* Pods_Pokemon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7EB92AD365B026E26C7444 /* Pods-Pokemon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon.release.xcconfig"; path = "Target Support Files/Pods-Pokemon/Pods-Pokemon.release.xcconfig"; sourceTree = "<group>"; };
 		7B3B9489295C75C400562D5B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		7B47FA1B29631A1500FD9664 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		7B47FA4A2963517E00FD9664 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		7B47FA4C296352B600FD9664 /* CarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselModel.swift; sourceTree = "<group>"; };
+		7B47FA4E2963902600FD9664 /* ModelDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDefault.swift; sourceTree = "<group>"; };
 		7B61AA63295B1998007C5802 /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		7B61AA65295B1D1B007C5802 /* MovesCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesCharacteristics.swift; sourceTree = "<group>"; };
 		7BACC2CD294A61CF001C7E1F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
@@ -78,6 +86,24 @@
 				7B3B9489295C75C400562D5B /* UIColor+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7B47FA1A296319FA00FD9664 /* Carrosel */ = {
+			isa = PBXGroup;
+			children = (
+				7B47FA1B29631A1500FD9664 /* CarouselView.swift */,
+				7B47FA4A2963517E00FD9664 /* CarouselCell.swift */,
+				7B47FA4C296352B600FD9664 /* CarouselModel.swift */,
+			);
+			path = Carrosel;
+			sourceTree = "<group>";
+		};
+		7B47FA502963905100FD9664 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B47FA4E2963902600FD9664 /* ModelDefault.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7B61AA62295B1979007C5802 /* Model */ = {
@@ -137,6 +163,7 @@
 		7BDF67E4293104B500FB15A6 /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
+				7B47FA502963905100FD9664 /* Model */,
 				7B3B9488295C759600562D5B /* Extensions */,
 				7BFE8B27293A30B200F02ABA /* Main */,
 				7BFE8B26293A30A700F02ABA /* Details */,
@@ -233,6 +260,7 @@
 		7BFE8B26293A30A700F02ABA /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				7B47FA1A296319FA00FD9664 /* Carrosel */,
 				7BFE8B2D293A45A700F02ABA /* Model */,
 				7BFE8B2A293A32C900F02ABA /* Service */,
 				7BFE8B29293A32BA00F02ABA /* ViewModel */,
@@ -421,13 +449,16 @@
 				7BACC2CE294A61CF001C7E1F /* StatsView.swift in Sources */,
 				7BDF67CF2930F24E00FB15A6 /* ViewController.swift in Sources */,
 				7BDF67E82931050400FB15A6 /* PokemonViewModel.swift in Sources */,
+				7B47FA4F2963902600FD9664 /* ModelDefault.swift in Sources */,
 				7B61AA66295B1D1B007C5802 /* MovesCharacteristics.swift in Sources */,
 				7BE0C1D3294F968100EE0685 /* StatsModel.swift in Sources */,
+				7B47FA4D296352B600FD9664 /* CarouselModel.swift in Sources */,
 				7B61AA64295B1998007C5802 /* AboutModel.swift in Sources */,
 				7BFE8B2F293A45B500F02ABA /* PokemonDetailsModel.swift in Sources */,
 				7BDF67CB2930F24E00FB15A6 /* AppDelegate.swift in Sources */,
 				7BFE8B252938D47100F02ABA /* PokemonDetailsViewModel.swift in Sources */,
 				7BE0C1CE294F563500EE0685 /* StatsDetails.swift in Sources */,
+				7B47FA1C29631A1500FD9664 /* CarouselView.swift in Sources */,
 				7BACC2D0294A621D001C7E1F /* StatsDetailsView.swift in Sources */,
 				7BDF67ED29310C4700FB15A6 /* PokemonTableViewCell.swift in Sources */,
 				7BE5BB9E2959E56900211F93 /* AboutView.swift in Sources */,
@@ -435,6 +466,7 @@
 				7B3B948A295C75C400562D5B /* UIColor+.swift in Sources */,
 				7BE5BBA02959E74C00211F93 /* Characteristics.swift in Sources */,
 				7BFE8B2C293A32E200F02ABA /* PokemonDetailsService.swift in Sources */,
+				7B47FA4B2963517E00FD9664 /* CarouselCell.swift in Sources */,
 				7BDF67E02930F4A800FB15A6 /* PokemonService.swift in Sources */,
 				7BDF67E32930FD7800FB15A6 /* PokemonsModel.swift in Sources */,
 			);

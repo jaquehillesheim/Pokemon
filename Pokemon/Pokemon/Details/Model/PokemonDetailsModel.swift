@@ -4,7 +4,7 @@ struct PokemonDetailsModel: Decodable {
     let sprites: Sprites
     let height: Double?
     let weight: Double?
-    let species: Species
+    let species: ModelDefault
     let stats: [Stats]
     let moves: [Moves]
 }
@@ -22,36 +22,16 @@ struct SpritesHome: Decodable {
     let frontShiny: String
 }
 
-struct Species: Decodable {
-    let name: String
-    let url: String
-}
-
 struct SpeciesDetails: Decodable {
-    let color: Color
-}
-
-struct Color: Decodable {
-    let name: String
-    let url: String
+    let color: ModelDefault
 }
 
 struct Stats: Decodable {
     let baseStat: Int
     let effort: Int
-    let stat: StatDetails
-}
-
-struct StatDetails: Decodable {
-    let name: String
-    let url: String
+    let stat: ModelDefault
 }
 
 struct Moves: Decodable {
-    let move: MoveDetails
-}
-
-struct MoveDetails: Decodable {
-    let name: String
-    let url: String
+    let move: ModelDefault
 }

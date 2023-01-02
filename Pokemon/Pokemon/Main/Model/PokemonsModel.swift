@@ -8,11 +8,5 @@
 import Foundation
 
 struct PokemonsModel: Decodable {
-    let results: [Pokemon]
+    let results: [ModelDefault]
 }
-
-struct Pokemon: Decodable {
-    let name: String
-    let url: String
-}
-

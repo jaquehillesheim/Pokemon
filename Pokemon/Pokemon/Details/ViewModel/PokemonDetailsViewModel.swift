@@ -40,6 +40,13 @@ class PokemonDetailsViewModel {
         }
     }
     
+    func createImages() -> [CarouselData] {
+        var carouselData = [CarouselData]()
+        carouselData.append(.init(image: URL(string: model?.sprites.other.home.frontDefault ?? "") ?? URL(string: "")))
+        carouselData.append(.init(image: URL(string: model?.sprites.other.home.frontShiny ?? "") ?? URL(string: "")))
+        return carouselData
+    }
+    
     var pokemonColor: UIColor {
         switch color {
         case "green":
@@ -67,10 +74,6 @@ class PokemonDetailsViewModel {
         }
     }
 
-    var frontDefaultImage: URL? {
-        URL(string: model?.sprites.other.home.frontDefault ?? "") ?? URL(string: "")
-    }
-    
     var nameLabel: String? {
         model?.name?.capitalized ?? ""
     }

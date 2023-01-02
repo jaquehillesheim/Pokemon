@@ -30,16 +30,8 @@ class PokemonDetailsViewController: UIViewController {
         return label
         
     }()
-        
-    private lazy var frontDefaultImage: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 40.0
-        image.layer.masksToBounds = true
-        image.contentMode = .scaleAspectFit
-        
-        return image
-    }()
+    
+    private var carouselView = CarouselView()
     
     private lazy var aboutView = AboutStatsView()
 
@@ -88,7 +80,7 @@ extension PokemonDetailsViewController {
     func setupview() {
         view.addSubview(nameLabel)
         view.addSubview(idLabel)
-        view.addSubview(frontDefaultImage)
+        view.addSubview(carouselView)
         view.addSubview(stackView)
         
         setupContraint()
@@ -105,22 +97,20 @@ extension PokemonDetailsViewController {
             make.trailing.equalToSuperview().inset(20)
         }
         
-        frontDefaultImage.snp.makeConstraints { make in
+        carouselView.snp.makeConstraints { make in
             make.top.equalTo(idLabel.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.size.equalTo(200)
         }
         
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(frontDefaultImage.snp.bottom)
+            make.top.equalTo(carouselView.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(10)
             make.bottom.equalToSuperview().offset(-20)
         }
     }
     
-    func setDetails() {
-        frontDefaultImage.sd_setImage(with: viewModel.frontDefaultImage)
-        
+    func setDetails() { carouselView.configureView(with: viewModel.createImages())
         nameLabel.text = viewModel.nameLabel
         idLabel.text = viewModel.idLabel
         
