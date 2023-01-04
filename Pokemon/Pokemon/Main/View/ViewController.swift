@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     private lazy var tituloLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Lista Pokemon."
+        label.text = "Pokédex"
         label.textColor = .white
         label.font = .systemFont(ofSize: 24.0, weight: .bold)
         
@@ -44,6 +44,7 @@ class ViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        navigationController?.navigationBar.tintColor = .black
     }
 }
 private extension ViewController {
@@ -91,7 +92,7 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .Gelo
         }
         tableView.reloadRows(at: [indexPath], with: .fade)
         

@@ -53,14 +53,14 @@ class AboutStatsView: UIView {
         addSubview(stackView)
         
         baseLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(100)
         }
         
         stackView.snp.makeConstraints { make in
             make.top.equalTo(baseLabel.snp.bottom)
             make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     

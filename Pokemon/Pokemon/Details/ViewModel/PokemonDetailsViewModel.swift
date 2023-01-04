@@ -44,6 +44,8 @@ class PokemonDetailsViewModel {
         var carouselData = [CarouselData]()
         carouselData.append(.init(image: URL(string: model?.sprites.other.home.frontDefault ?? "") ?? URL(string: "")))
         carouselData.append(.init(image: URL(string: model?.sprites.other.home.frontShiny ?? "") ?? URL(string: "")))
+        
+        
         return carouselData
     }
     

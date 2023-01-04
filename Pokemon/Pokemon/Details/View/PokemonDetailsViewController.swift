@@ -106,11 +106,12 @@ extension PokemonDetailsViewController {
         stackView.snp.makeConstraints { make in
             make.top.equalTo(carouselView.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(10)
-            make.bottom.equalToSuperview().offset(-20)
+//            make.bottom.equalToSuperview().offset(-20)
         }
     }
     
-    func setDetails() { carouselView.configureView(with: viewModel.createImages())
+    func setDetails() {
+        carouselView.configureView(with: viewModel.createImages())
         nameLabel.text = viewModel.nameLabel
         idLabel.text = viewModel.idLabel
         
