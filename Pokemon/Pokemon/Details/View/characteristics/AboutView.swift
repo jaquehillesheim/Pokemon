@@ -42,6 +42,7 @@ class AboutStatsView: UIView {
     init() {
         super.init(frame: CGRect.zero)
         setupView()
+        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

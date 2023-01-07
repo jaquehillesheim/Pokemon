@@ -43,6 +43,7 @@ class StatsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

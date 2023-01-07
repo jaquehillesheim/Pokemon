@@ -30,7 +30,7 @@ class StatsDetailsView: UIView {
         let progressView = UIProgressView(progressViewStyle: .default)
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.progress = 0.0
-        progressView.trackTintColor = .Gelo
+        progressView.trackTintColor = .white
        
         return progressView
     }()

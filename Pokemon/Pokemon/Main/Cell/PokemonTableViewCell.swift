@@ -20,6 +20,8 @@ class PokemonTableViewCell: UITableViewCell {
         return label
     }()
     
+    private(set) lazy var pokemonImage = UIImageView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLabel()
@@ -31,16 +33,21 @@ class PokemonTableViewCell: UITableViewCell {
     }
     
     func setLayout() {
-        backgroundColor = .Gelo
+        backgroundColor = .clear
         title.textColor = .black
     }
     
     func setupLabel() {
         addSubview(title)
+        addSubview(pokemonImage)
         
         title.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(20)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(20)
+        }
+        
+        pokemonImage.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
         }
     }
 

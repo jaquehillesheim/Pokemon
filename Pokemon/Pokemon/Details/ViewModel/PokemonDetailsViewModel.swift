@@ -14,6 +14,7 @@ class PokemonDetailsViewModel {
     var model: PokemonDetailsModel?
     var color: String?
     var reload: (() -> Void)?
+    var alert: (() -> Void)?
     
     func loadData(url: String) {
         service.fetchPokemonDetails(url: url) { result in
@@ -23,7 +24,8 @@ class PokemonDetailsViewModel {
                 self.loadColor(url: success.species.url)
                 self.reload?()
             case .failure(let failure):
-                print(failure)
+                self.alert?()
+                
             }
         }
     }
@@ -56,7 +58,7 @@ class PokemonDetailsViewModel {
         case "blue":
             return .blueLight
         case "black":
-            return .BlackLight
+            return .blackLight
         case "brown":
             return .brownLight
         case "gray":
@@ -68,11 +70,11 @@ class PokemonDetailsViewModel {
         case "red":
             return .redLight
         case "white":
-            return .Gelo
+            return .gelo
         case "yellow":
             return .yellow
         default:
-            return .Gelo
+            return .gelo
         }
     }
 

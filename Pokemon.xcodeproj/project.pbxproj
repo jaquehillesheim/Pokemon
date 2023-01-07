@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B3B948A295C75C400562D5B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B9489295C75C400562D5B /* UIColor+.swift */; };
+		7B3B948A295C75C400562D5B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B9489295C75C400562D5B /* Colors.swift */; };
 		7B47FA1C29631A1500FD9664 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA1B29631A1500FD9664 /* CarouselView.swift */; };
 		7B47FA4B2963517E00FD9664 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA4A2963517E00FD9664 /* CarouselCell.swift */; };
 		7B47FA4D296352B600FD9664 /* CarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA4C296352B600FD9664 /* CarouselModel.swift */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		0FFA133303C8576B64E6C7D3 /* Pods_Pokemon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7EB92AD365B026E26C7444 /* Pods-Pokemon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon.release.xcconfig"; path = "Target Support Files/Pods-Pokemon/Pods-Pokemon.release.xcconfig"; sourceTree = "<group>"; };
-		7B3B9489295C75C400562D5B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		7B3B9489295C75C400562D5B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7B47FA1B29631A1500FD9664 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		7B47FA4A2963517E00FD9664 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		7B47FA4C296352B600FD9664 /* CarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselModel.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		7B3B9488295C759600562D5B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7B3B9489295C75C400562D5B /* UIColor+.swift */,
+				7B3B9489295C75C400562D5B /* Colors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -463,7 +463,7 @@
 				7BDF67ED29310C4700FB15A6 /* PokemonTableViewCell.swift in Sources */,
 				7BE5BB9E2959E56900211F93 /* AboutView.swift in Sources */,
 				7BFE8B232938CEC300F02ABA /* PokemonDetailsViewController.swift in Sources */,
-				7B3B948A295C75C400562D5B /* UIColor+.swift in Sources */,
+				7B3B948A295C75C400562D5B /* Colors.swift in Sources */,
 				7BE5BBA02959E74C00211F93 /* Characteristics.swift in Sources */,
 				7BFE8B2C293A32E200F02ABA /* PokemonDetailsService.swift in Sources */,
 				7B47FA4B2963517E00FD9664 /* CarouselCell.swift in Sources */,

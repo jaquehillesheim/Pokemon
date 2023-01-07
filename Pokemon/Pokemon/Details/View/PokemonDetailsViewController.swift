@@ -44,10 +44,7 @@ class PokemonDetailsViewController: UIViewController {
             stack.addArrangedSubview(view)
         }
         stack.distribution = .fill
-        stack.spacing = 16.0
         stack.axis = .vertical
-        stack.backgroundColor = .white
-        stack.layer.cornerRadius = 20
         
         return stack
     }()
@@ -67,6 +64,7 @@ class PokemonDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupview()
+        
         viewModel.loadData(url: url)
         viewModel.reload = {
             DispatchQueue.main.async {
@@ -87,6 +85,7 @@ extension PokemonDetailsViewController {
     }
     
     func setupContraint() {
+        
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()

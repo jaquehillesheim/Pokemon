@@ -11,6 +11,7 @@ import SDWebImage
 
 
 class ViewController: UIViewController {
+
     
     private lazy var tituloLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +27,8 @@ class ViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(PokemonTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
         
         return tableView
     }()
@@ -34,14 +37,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .redMain
+       
         setupView()
-        tableView.delegate = self
-        tableView.dataSource = self
+
         viewModel.loadData()
         viewModel.reloadtableView = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+        }
+        
+        viewModel.alert = {
+            DispatchQueue.main.async {
+                self.alert(title: "Atenção", mensage: "Não foi possivel carregar o Pokemon")
             }
         }
         navigationController?.navigationBar.tintColor = .black
@@ -49,6 +57,11 @@ class ViewController: UIViewController {
 }
 private extension ViewController {
     func setupView() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithTransparentBackground()
+        navBarAppearance.backgroundColor = .clear
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        view.backgroundColor = .redMain
         navigationItem.backButtonTitle = "Voltar"
         view.addSubview(tituloLabel)
         view.addSubview(tableView)
@@ -58,16 +71,28 @@ private extension ViewController {
     func setupConstraint() {
         
         tituloLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalToSuperview().offset(80)
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.centerX.equalToSuperview()
         }
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(tituloLabel.snp.bottom).offset(30)
-            make.leading.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(6)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
+    }
+    
+    func alert(title: String, mensage: String) {
+        let alert = UIAlertController(title: title, message: mensage, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(
+            title: "Tente Novamente",
+            style: .default,
+            handler: {_ in
+                self.viewModel.loadData()
+        })
+        alert.addAction(defaultAction)
+        self.present(alert, animated: true)
     }
 }
 
@@ -85,14 +110,18 @@ extension ViewController: UITableViewDataSource {
         let cellViewModel = viewModel.getCellViewModel(at: indexPath)
         cell.title.text = cellViewModel.name
         
+        cell.pokemonImage.sd_setImage(with: cellViewModel.urlImage)
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
 }
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.backgroundColor = .Gelo
+            cell.backgroundColor = .white
         }
         tableView.reloadRows(at: [indexPath], with: .fade)
         

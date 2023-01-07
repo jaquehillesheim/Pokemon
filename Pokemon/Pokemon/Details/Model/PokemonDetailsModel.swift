@@ -10,6 +10,7 @@ struct PokemonDetailsModel: Decodable {
 }
 
 struct Sprites: Decodable {
+    let frontDefault: String
     let other: SpritesOther
 }
 
