@@ -14,74 +14,10 @@
             filePath = "Pokemon/Pokemon/Main/ViewModel/PokemonViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "createCell(viewModels:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8E52167B-F536-4AE0-9333-1E45A0F93688"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pokemon/Pokemon/Main/ViewModel/PokemonViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "createAllPokemons(pokemons:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B88A5B43-B6FB-4D47-9F76-EBB3DD22A7D0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pokemon/Pokemon/Main/ViewModel/PokemonViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "createAllPokemons(pokemons:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B88A5B43-B6FB-4D47-9F76-EBB3DD22A7D0 - 1743501cd759609"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pokemon.PokemonViewModel.createAllPokemons(pokemons: Pokemon.PokemonsModel) -&gt; ()"
-                  moduleName = "Pokemon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaqueline/Desktop/Pokemon/Pokemon/Pokemon/Main/ViewModel/PokemonViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "424">
-               </Location>
-               <Location
-                  uuid = "B88A5B43-B6FB-4D47-9F76-EBB3DD22A7D0 - 18ed3e8f4678bbfd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Pokemon.PokemonDetailsModel, Swift.Error&gt;) -&gt; () in Pokemon.PokemonViewModel.createAllPokemons(pokemons: Pokemon.PokemonsModel) -&gt; ()"
-                  moduleName = "Pokemon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaqueline/Desktop/Pokemon/Pokemon/Pokemon/Main/ViewModel/PokemonViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "413">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -26,8 +26,7 @@ class PokemonViewModel {
         service.fetchPokemon() { result in
             switch result {
             case .success(let pokemons):
-                self.createAllPokemons(pokemons: pokemons)
-                self.reloadtableView?()
+                self.createCell(pokemons: pokemons)
             case .failure(_):
                 self.alert?()
             }
@@ -42,34 +41,18 @@ class PokemonViewModel {
         return cellViewModels[indexPath.row]
     }
     
-    func createAllPokemons(pokemons: PokemonsModel) {
+    func createCell(pokemons: PokemonsModel) {
         self.pokemons = pokemons
+        var number = 0
+        var viewModels = [PokemonCellViewModel]()
         for pokemon in pokemons.results {
-            PokemonDetailsService().fetchPokemonDetails(url: pokemon.url) { result in
-                switch result {
-                case .success(let success):
-                    guard let url = URL(string: success.sprites.frontDefault) else { return }
-                    let pokemonDetails = PokemonCellViewModel(name: success.name, urlImage: url)
-                
-                    self.cellViewModels.append(pokemonDetails)
-                case .failure(let failure):
-                    break
-                }
-            }
+
+            number += 1
+            guard let url = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(number).png") else { return }
+            viewModels.append(PokemonCellViewModel(name: "#\(number) \(pokemon.name.capitalized)", urlImage: url))
         }
-    }
-    
-    func createCell(viewModels: [PokemonCellViewModel]) {
         cellViewModels = viewModels
-//        var number = 0
-//        var viewModels = [PokemonCellViewModel]()
-//        for pokemon in pokemons.results {
-//
-//            number += 1
-//            guard let url = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(number).png") else { return }
-//            viewModels.append(PokemonCellViewModel(name: "#\(number) \(pokemon.name.capitalized)", urlImage: url))
-//        }
-//        cellViewModels = viewModels
+        reloadtableView?()
     }
     
     func didSelectPokemon(at indexPath: IndexPath) -> String {
