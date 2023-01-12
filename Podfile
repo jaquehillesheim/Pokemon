@@ -8,5 +8,6 @@ target 'Pokemon' do
   # Pods for Pokemon
 	pod 'SnapKit'
   pod 'SDWebImage', '~> 5.0'
+	pod 'lottie-ios'
 
 end

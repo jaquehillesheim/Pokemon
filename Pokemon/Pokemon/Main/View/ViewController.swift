@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import Lottie
 
 
 class ViewController: UIViewController {
@@ -33,12 +34,20 @@ class ViewController: UIViewController {
         return tableView
     }()
     
+    private let animationView: LottieAnimationView = {
+        let lottieAnimationView = LottieAnimationView(name: "Pokemon")
+        lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        lottieAnimationView.loopMode = .repeat(2.0)
+        lottieAnimationView.backgroundColor = .redMain
+      return lottieAnimationView
+    }()
+     
     private lazy var viewModel = PokemonViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setupView()
+        setupLottie()
 
         viewModel.loadData()
         viewModel.reloadtableView = {
@@ -56,7 +65,34 @@ class ViewController: UIViewController {
     }
 }
 private extension ViewController {
+    
+    func setupLottie() {
+        // 1 - adicionar animação lottie para iniciar Pokemon
+        
+         view.addSubview(animationView)
+
+         animationView.frame = view.bounds
+         animationView.center = view.center
+         animationView.alpha = 1
+        
+        animationView.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+
+         animationView.play { _ in
+             UIView.animate(withDuration: 1, animations: {
+             self.animationView.alpha = 0
+           }, completion: { _ in
+             self.animationView.isHidden = true
+             self.animationView.removeFromSuperview()
+
+           })
+         }
+    }
+    
     func setupView() {
+        
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithTransparentBackground()
         navBarAppearance.backgroundColor = .clear
@@ -72,7 +108,6 @@ private extension ViewController {
         
         tituloLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(80)
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.centerX.equalToSuperview()
         }
         

@@ -23,9 +23,8 @@ class PokemonDetailsViewModel {
                 self.model = success
                 self.loadColor(url: success.species.url)
                 self.reload?()
-            case .failure(let failure):
+            case .failure:
                 self.alert?()
-                
             }
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B1EAFD5296F4CBE0039C93C /* Pokemon.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B1EAFD4296F4CBE0039C93C /* Pokemon.json */; };
 		7B3B948A295C75C400562D5B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B9489295C75C400562D5B /* Colors.swift */; };
 		7B47FA1C29631A1500FD9664 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA1B29631A1500FD9664 /* CarouselView.swift */; };
 		7B47FA4B2963517E00FD9664 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B47FA4A2963517E00FD9664 /* CarouselCell.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		0FFA133303C8576B64E6C7D3 /* Pods_Pokemon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7EB92AD365B026E26C7444 /* Pods-Pokemon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon.release.xcconfig"; path = "Target Support Files/Pods-Pokemon/Pods-Pokemon.release.xcconfig"; sourceTree = "<group>"; };
+		7B1EAFD4296F4CBE0039C93C /* Pokemon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Pokemon.json; path = ../../../Downloads/Pokemon.json; sourceTree = "<group>"; };
 		7B3B9489295C75C400562D5B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7B47FA1B29631A1500FD9664 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		7B47FA4A2963517E00FD9664 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				7BDF67CA2930F24E00FB15A6 /* AppDelegate.swift */,
 				7BDF67D32930F24F00FB15A6 /* Assets.xcassets */,
 				7BDF67D52930F24F00FB15A6 /* LaunchScreen.storyboard */,
+				7B1EAFD4296F4CBE0039C93C /* Pokemon.json */,
 				7BDF67D82930F24F00FB15A6 /* Info.plist */,
 			);
 			path = Pokemon;
@@ -392,6 +395,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B1EAFD5296F4CBE0039C93C /* Pokemon.json in Resources */,
 				7BDF67D72930F24F00FB15A6 /* LaunchScreen.storyboard in Resources */,
 				7BDF67D42930F24F00FB15A6 /* Assets.xcassets in Resources */,
 			);
@@ -606,13 +610,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DDKF9XP3VR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokemon/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -636,13 +641,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DDKF9XP3VR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokemon/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
