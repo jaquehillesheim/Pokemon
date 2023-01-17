@@ -8,13 +8,17 @@
 import Foundation
 import SDWebImage
 
+protocol PokemonDetailsViewModelDelegate {
+    func presentAlert()
+    func loadDetails()
+}
+
 class PokemonDetailsViewModel {
     
     private let service = PokemonDetailsService()
     var model: PokemonDetailsModel?
     var color: String?
-    var reload: (() -> Void)?
-    var alert: (() -> Void)?
+    var delegate: PokemonDetailsViewModelDelegate?
     
     func loadData(url: String) {
         service.fetchPokemonDetails(url: url) { result in
@@ -22,9 +26,9 @@ class PokemonDetailsViewModel {
             case .success(let success):
                 self.model = success
                 self.loadColor(url: success.species.url)
-                self.reload?()
             case .failure:
-                self.alert?()
+                self.delegate?.presentAlert()
+
             }
         }
     }
@@ -34,9 +38,9 @@ class PokemonDetailsViewModel {
             switch result {
             case .success(let success):
                 self.color = success.color.name
-                self.reload?()
+                self.delegate?.loadDetails()
             case .failure(_):
-                break
+                self.delegate?.presentAlert()
             }
         }
     }
@@ -45,7 +49,6 @@ class PokemonDetailsViewModel {
         var carouselData = [CarouselData]()
         carouselData.append(.init(image: URL(string: model?.sprites.other.home.frontDefault ?? "") ?? URL(string: "")))
         carouselData.append(.init(image: URL(string: model?.sprites.other.home.frontShiny ?? "") ?? URL(string: "")))
-        
         
         return carouselData
     }

@@ -8,17 +8,21 @@
 import Foundation
 import UIKit
 
+protocol PokemonViewModelDelegate {
+    func presentAlert()
+    func reloadTableView()
+}
+
 class PokemonViewModel {
     
     var pokemons: PokemonsModel?
-    var reloadtableView: (() -> Void)?
-    var alert: (() -> Void)?
+    var delegate: PokemonViewModelDelegate?
     
     private let service = PokemonService()
     
     private var cellViewModels: [PokemonCellViewModel] = [PokemonCellViewModel] () {
         didSet {
-            self.reloadtableView?()
+            self.delegate?.reloadTableView()
         }
     }
     
@@ -28,7 +32,8 @@ class PokemonViewModel {
             case .success(let pokemons):
                 self.createCell(pokemons: pokemons)
             case .failure(_):
-                self.alert?()
+                self.delegate?.presentAlert()
+                
             }
         }
     }
@@ -52,7 +57,7 @@ class PokemonViewModel {
             viewModels.append(PokemonCellViewModel(name: "#\(number) \(pokemon.name.capitalized)", urlImage: url))
         }
         cellViewModels = viewModels
-        reloadtableView?()
+        delegate?.reloadTableView()
     }
     
     func didSelectPokemon(at indexPath: IndexPath) -> String {

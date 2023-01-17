@@ -42,25 +42,15 @@ class ViewController: UIViewController {
       return lottieAnimationView
     }()
      
+    private lazy var alert = UIAlertController()
     private lazy var viewModel = PokemonViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupLottie()
+        viewModel.delegate = self
 
-        viewModel.loadData()
-        viewModel.reloadtableView = {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        
-        viewModel.alert = {
-            DispatchQueue.main.async {
-                self.alert(title: "Atenção", mensage: "Não foi possivel carregar o Pokemon")
-            }
-        }
         navigationController?.navigationBar.tintColor = .black
     }
 }
@@ -81,15 +71,17 @@ private extension ViewController {
         }
 
          animationView.play { _ in
-             UIView.animate(withDuration: 1, animations: {
+             UIView.animate(withDuration: 0, animations: {
              self.animationView.alpha = 0
            }, completion: { _ in
+             self.viewModel.loadData()
              self.animationView.isHidden = true
              self.animationView.removeFromSuperview()
-
+            
            })
          }
     }
+    
     
     func setupView() {
         
@@ -116,18 +108,6 @@ private extension ViewController {
             make.leading.trailing.equalToSuperview().inset(6)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
-    }
-    
-    func alert(title: String, mensage: String) {
-        let alert = UIAlertController(title: title, message: mensage, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(
-            title: "Tente Novamente",
-            style: .default,
-            handler: {_ in
-                self.viewModel.loadData()
-        })
-        alert.addAction(defaultAction)
-        self.present(alert, animated: true)
     }
 }
 
@@ -165,5 +145,28 @@ extension ViewController: UITableViewDelegate {
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
-
+extension ViewController: PokemonViewModelDelegate {
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func presentAlert() {
+        let alert = UIAlertController(title: "Atenção", message: "Não foi possivel carregar o Pokemon", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(
+            title: "Tente Novamente",
+            style: .default,
+            handler: {_ in
+                self.viewModel.loadData()
+                self.reloadTableView()
+        })
+        alert.addAction(defaultAction)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
+        
+    }
+    
+}
 

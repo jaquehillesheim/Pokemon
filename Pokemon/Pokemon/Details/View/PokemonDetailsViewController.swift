@@ -28,7 +28,6 @@ class PokemonDetailsViewController: UIViewController {
         label.textColor = .black
         
         return label
-        
     }()
     
     private var carouselView = CarouselView()
@@ -49,7 +48,10 @@ class PokemonDetailsViewController: UIViewController {
         return stack
     }()
     
+    private lazy var alert = UIAlertController()
+    
     private let viewModel = PokemonDetailsViewModel()
+    
     private let url: String
     
     init(url: String) {
@@ -64,13 +66,9 @@ class PokemonDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupview()
+        viewModel.delegate = self
         
         viewModel.loadData(url: url)
-        viewModel.reload = {
-            DispatchQueue.main.async {
-                self.setDetails()
-            }
-        }
     }
 }
 
@@ -105,7 +103,6 @@ extension PokemonDetailsViewController {
         stackView.snp.makeConstraints { make in
             make.top.equalTo(carouselView.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(10)
-//            make.bottom.equalToSuperview().offset(-20)
         }
     }
     
@@ -139,5 +136,28 @@ extension PokemonDetailsViewController {
         )
         statsView.setupDetails(statsModel: statsModel)
         view.backgroundColor = viewModel.pokemonColor
+    }
+}
+
+extension PokemonDetailsViewController: PokemonDetailsViewModelDelegate {
+    func presentAlert() {
+        let alert = UIAlertController(title: "Atenção", message: "Não foi possivel carregar os detalhes do Pokemon", preferredStyle: .alert)
+        let actionDeafult = UIAlertAction(
+            title: "Tente Novamente",
+            style: .default,
+            handler: {_ in
+                self.viewModel.loadData(url: self.url)
+                self.loadDetails()
+        })
+        alert.addAction(actionDeafult)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func loadDetails() {
+        DispatchQueue.main.async {
+            self.setDetails()
+        }
     }
 }
