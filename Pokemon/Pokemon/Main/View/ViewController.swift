@@ -11,7 +11,7 @@ import SDWebImage
 import Lottie
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
 
     
     private lazy var tituloLabel: UILabel = {
@@ -35,11 +35,24 @@ class ViewController: UIViewController {
     }()
     
     private let animationView: LottieAnimationView = {
-        let lottieAnimationView = LottieAnimationView(name: "Pokemon")
+        let lottieAnimationView = LottieAnimationView(name: "pokemon")
         lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
         lottieAnimationView.loopMode = .repeat(2.0)
         lottieAnimationView.backgroundColor = .redMain
+        
       return lottieAnimationView
+    }()
+    
+    // Mark: SearchBar = Barra de pesquisa
+    private lazy var searchbar: UISearchBar = {
+        let search = UISearchBar()
+        search.barTintColor = .redMain
+        search.placeholder = "Procure seu Pokémon"
+        let textField = search.value(forKey: "searchField") as? UITextField
+        textField?.textColor = .black
+        textField?.backgroundColor = .white
+        
+        return search
     }()
      
     private lazy var alert = UIAlertController()
@@ -48,13 +61,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
         setupLottie()
+        bind()
         viewModel.delegate = self
+        searchbar.delegate = self
 
         navigationController?.navigationBar.tintColor = .black
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filterResults(searchText)
+        tableView.reloadData()
+    }
+    
+    func bind() {
+        viewModel.viewData.bind { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+           
+        }
+    }
 }
 private extension ViewController {
+    
+    
     
     func setupLottie() {
         // 1 - adicionar animação lottie para iniciar Pokemon
@@ -71,10 +103,9 @@ private extension ViewController {
         }
 
          animationView.play { _ in
-             UIView.animate(withDuration: 0, animations: {
+             UIView.animate(withDuration: 2, animations: {
              self.animationView.alpha = 0
            }, completion: { _ in
-             self.viewModel.loadData()
              self.animationView.isHidden = true
              self.animationView.removeFromSuperview()
             
@@ -90,9 +121,11 @@ private extension ViewController {
         navBarAppearance.backgroundColor = .clear
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         view.backgroundColor = .redMain
-        navigationItem.backButtonTitle = "Voltar"
+        navigationItem.backButtonTitle = "Pokedex"
         view.addSubview(tituloLabel)
+        view.addSubview(searchbar)
         view.addSubview(tableView)
+        
         setupConstraint()
     }
     
@@ -103,12 +136,18 @@ private extension ViewController {
             make.centerX.equalToSuperview()
         }
         
+        searchbar.snp.makeConstraints { make in
+            make.top.equalTo(tituloLabel.snp.bottom).offset(5)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+        }
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(tituloLabel.snp.bottom).offset(30)
+            make.top.equalTo(searchbar.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(6)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
     }
+    
 }
 
 extension ViewController: UITableViewDataSource {
@@ -122,10 +161,9 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let cellViewModel = viewModel.getCellViewModel(at: indexPath)
-        cell.title.text = cellViewModel.name
-        
-        cell.pokemonImage.sd_setImage(with: cellViewModel.urlImage)
+        let model = viewModel.getCellViewModel(at: indexPath)
+        cell.title.text = model.name
+        cell.pokemonImage.sd_setImage(with: model.imageUrl)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

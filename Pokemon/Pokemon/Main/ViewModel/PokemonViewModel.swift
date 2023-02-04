@@ -14,16 +14,15 @@ protocol PokemonViewModelDelegate {
 }
 
 class PokemonViewModel {
-    
-    var pokemons: PokemonsModel?
     var delegate: PokemonViewModelDelegate?
     
     private let service = PokemonService()
+    var viewData: Bindable<[PokemonViewData]> = Bindable([])
+    private var pokemonsViewModel: [PokemonViewData] = [PokemonViewData]()
+    private var searchPokemonsViewModel: [PokemonViewData] = [PokemonViewData]()
     
-    private var cellViewModels: [PokemonCellViewModel] = [PokemonCellViewModel] () {
-        didSet {
-            self.delegate?.reloadTableView()
-        }
+    init() {
+        loadData()
     }
     
     func loadData() {
@@ -39,33 +38,38 @@ class PokemonViewModel {
     }
     
     var numberOfCells: Int {
-        return cellViewModels.count
+        return viewData.value.count
     }
     
-    func getCellViewModel(at indexPath: IndexPath) -> PokemonCellViewModel {
-        return cellViewModels[indexPath.row]
+    func getCellViewModel(at indexPath: IndexPath) -> PokemonViewData {
+        return viewData.value[indexPath.row]
     }
     
     func createCell(pokemons: PokemonsModel) {
-        self.pokemons = pokemons
         var number = 0
-        var viewModels = [PokemonCellViewModel]()
         for pokemon in pokemons.results {
-
             number += 1
-            guard let url = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(number).png") else { return }
-            viewModels.append(PokemonCellViewModel(name: "#\(number) \(pokemon.name.capitalized)", urlImage: url))
+            let model = PokemonModel(name: pokemon.name, url: pokemon.url, number: number)
+            viewData.value.append(PokemonViewData(model: model))
         }
-        cellViewModels = viewModels
-        delegate?.reloadTableView()
+        pokemonsViewModel = viewData.value
+        searchPokemonsViewModel = viewData.value
     }
     
     func didSelectPokemon(at indexPath: IndexPath) -> String {
-        return pokemons?.results[indexPath.row].url ?? ""
+        return viewData.value[indexPath.row].url 
     }
-}
-
-struct PokemonCellViewModel {
-    let name: String?
-    let urlImage: URL?
+    func filterResults(_ searchText: String) {
+        var listArray = searchPokemonsViewModel
+        if searchText != "" {
+            listArray = listArray.filter({ pokemon -> Bool in
+                if pokemon.name.lowercased().contains(searchText.lowercased()) {
+                    return true
+                } else {
+                    return false
+                }
+            })
+        }
+        viewData.value = listArray
+    }
 }
