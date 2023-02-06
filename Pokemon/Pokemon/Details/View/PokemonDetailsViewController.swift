@@ -11,6 +11,8 @@ import SnapKit
 import SDWebImage
 
 class PokemonDetailsViewController: UIViewController {
+    private lazy var loadingView = LoadingView()
+    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -74,15 +76,19 @@ class PokemonDetailsViewController: UIViewController {
 
 extension PokemonDetailsViewController {
     func setupview() {
+        
         view.addSubview(nameLabel)
         view.addSubview(idLabel)
         view.addSubview(carouselView)
         view.addSubview(stackView)
+        view.addSubview(loadingView)
         
         setupContraint()
     }
     
     func setupContraint() {
+        
+        
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -103,6 +109,10 @@ extension PokemonDetailsViewController {
         stackView.snp.makeConstraints { make in
             make.top.equalTo(carouselView.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(10)
+        }
+        
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -136,6 +146,8 @@ extension PokemonDetailsViewController {
         )
         statsView.setupDetails(statsModel: statsModel)
         view.backgroundColor = viewModel.pokemonColor
+        loadingView.removeFromSuperview()
+        loadingView.loading.stopAnimating()
     }
 }
 
@@ -149,7 +161,14 @@ extension PokemonDetailsViewController: PokemonDetailsViewModelDelegate {
                 self.viewModel.loadData(url: self.url)
                 self.loadDetails()
         })
+        let actionVoltar = UIAlertAction(
+            title: "Voltar",
+            style: .default,
+            handler: {_ in
+                self.navigationController?.popViewController(animated: true)
+        })
         alert.addAction(actionDeafult)
+        alert.addAction(actionVoltar)
         DispatchQueue.main.async {
             self.present(alert, animated: true)
         }

@@ -12,8 +12,6 @@ import Lottie
 
 
 class ViewController: UIViewController, UISearchBarDelegate {
-
-    
     private lazy var tituloLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
